@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-12 col-lg-9">
+        <div class="col-12">
             <div class="row">
                 <div class="col-12">
                     <h1>Notification Form</h1>
@@ -42,10 +42,41 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <div class="row"></div>
-                                <div class="row"></div>
+                                <div class="row">
+                                    <mat-slide-toggle (click)="updateEmailPreference()">Email</mat-slide-toggle>
+                                </div>
+                                <div class="row">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput type="email" formControlName="email" id="email" name="email" aria-describedby="input email">
+                                    <button *ngIf="clearable" matSuffic mat-icon-button aria-label="clear" (click)="email=''">
+                                        <mat-icon>close</mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="emailPreference && form.get('email')?.dirty">
+                                        Email is <strong>required</strong>
+                                    </mat-error>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <mat-slide-toggle (click)="updatePhoneNumberPreference()">Phone Number</mat-slide-toggle>
+                                </div>
+                                <div class="row">
+                                    <mat-label>Phone Number</mat-label>
+                                    <input matInput type="text" formControlName="phoneNumber" id="phoneNumber" name="phoneNumber" aria-describedby="input phoneNumber">
+                                    <button *ngIf="clearable" matSuffic mat-icon-button aria-label="clear" (click)="phoneNumber=''">
+                                        <mat-icon>close</mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="phoneNumberPreference && form.get('phoneNumber')?.dirty">
+                                        Phone Number is <strong>required</strong>
+                                    </mat-error>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit">Submit</button>
                     </div>
                 </div>
             </form>
