@@ -1,1 +1,54 @@
-<p>form works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-9">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Notification Form</h1>
+                </div>
+            </div>
+
+            <form [formGroup]="form" (ngSubmit)="CreateJurisdiction()">
+                <div class="row">
+                    <div class="col-6">
+                        <mat-label>First Name</mat-label>
+                        <input matInput type="text" formControlName="firstName" id="name" name="name" aria-describedby="input name">
+                        <button *ngIf="clearable" matSuffic mat-icon-button aria-label="clear" (click)="fistName=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <mat-error *ngIf="form.get('firstName')?.errors && form.get('firstName')?.dirty">
+                            First Name is <strong>required</strong>
+                        </mat-error>
+                        <!-- <mat-form-field class="example-form-field" appearance="fill">
+                        </mat-form-field> -->
+                    </div>
+
+                    <div class="col-6">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput type="text" formControlName="lastName" id="name" name="name" aria-describedby="input name">
+                        <button *ngIf="clearable" matSuffic mat-icon-button aria-label="clear" (click)="lastName=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <mat-error *ngIf="form.get('lastName')?.errors && form.get('lastName')?.dirty">
+                            Last Name is <strong>required</strong>
+                        </mat-error>
+                        <!-- <mat-form-field class="example-form-field" appearance="fill">
+                        </mat-form-field> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <label>How would you prefer to be notified?</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row"></div>
+                                <div class="row"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

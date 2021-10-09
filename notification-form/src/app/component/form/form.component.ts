@@ -16,6 +16,9 @@ export class FormComponent implements OnInit {
   phoneNumber: string = '';
   supervisor: number = 0;
 
+  emailPreference: boolean = false;
+  phoneNumberPreference: boolean = false;
+
   supervisorList: any;
 
 
@@ -51,6 +54,14 @@ export class FormComponent implements OnInit {
       console.log('succesfully submitted form');
       this.form.reset();
     }
+  }
+
+  updateEmailPreference(){
+    this.emailPreference = !this.emailPreference;
+  }
+
+  updatePhoneNumberPreference(){
+    this.phoneNumberPreference = !this.phoneNumberPreference;
   }
 
   private subscribeForm(){
