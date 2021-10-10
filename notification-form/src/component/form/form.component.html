@@ -1,0 +1,111 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <h1>Notification Form</h1>
+
+            </div>
+
+            <form [formGroup]="form" (ngSubmit)="submitForm()">
+
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field class="form-field">
+                            <mat-label>First Name</mat-label>
+                            <input matInput type="text" formControlName="firstName" id="name" name="name" aria-describedby="input name" required>
+                            <mat-error *ngIf="form.get('firstName').errors?.required">
+                                First Name is <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="form.get('firstName').errors?.pattern && form.get('firstName').dirty">
+                                Please enter a valid first name (letters only)
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-6">
+                        <mat-form-field class="form-field" >
+                            <mat-label>Last Name</mat-label>
+                            <input matInput type="text" formControlName="lastName" id="name" name="name" aria-describedby="input name" required>
+                            <mat-error *ngIf="form.get('lastName').errors?.required">
+                                Last Name is <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="form.get('lastName').errors?.pattern && form.get('lastName').dirty">
+                                Please enter a valid last name (letters only)
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="row">
+                            <h4>How would you prefer to be notified?</h4>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row">
+                                    <!-- <mat-slide-toggle (click)="updateEmailPreference()" id="emailPreference" name="emailPreference" aria-describedby="emailPreference" >Email</mat-slide-toggle> -->
+                                    <input type="checkbox" (click)="updateEmailPreference()" id="emailPreference" name="emailPreference" aria-describedby="emailPreference"> Email
+                                </div>
+
+                                <div class="row">
+                                    <mat-form-field class="form-field">
+                                        <mat-label>Email</mat-label>
+                                        <input matInput type="email" [attr.disabled]="emailPreference" formControlName="email" id="email" name="email" aria-describedby="input email">
+                                        <mat-error *ngIf="form.get('email').errors?.required">
+                                            Email is <strong>required</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="form.get('email').errors?.email && form.get('email').dirty">
+                                            Please enter a valid email (foo@bar.com)
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <!-- <mat-slide-toggle (click)="updatePhoneNumberPreference()" id="phoneNumberPreference" name="phoneNumberPreference" aria-describedby="phoneNumberPreference" >Phone Number</mat-slide-toggle> -->
+                                    <input type="checkbox" (click)="updatePhoneNumberPreference()" id="phoneNumberPreference" name="phoneNumberPreference" aria-describedby="phoneNumberPreference"> Phone Number
+                                </div>
+
+                                <div class="row">
+                                    <mat-form-field class="form-field">
+                                        <mat-label>Phone Number</mat-label>
+                                        <input matInput type="text" [attr.disabled]="phoneNumberPreference" formControlName="phoneNumber" id="phoneNumber" name="phoneNumber" aria-describedby="input phoneNumber">
+                                        <mat-error *ngIf="form.get('phoneNumber').errors?.required">
+                                            Phone Number is <strong>required</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="form.get('phoneNumber').errors?.pattern && form.get('phoneNumber').dirty">
+                                            Please enter a valid phone number (99 999 999 9999)
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <mat-form-field class="form-field" appearance="fill" >
+                            <mat-label>Supervisors</mat-label>
+                            <mat-select formControlName="supervisor" id="supervisor" name="supervisor" aria-describedat="select supervisor" required>
+                                <mat-option *ngFor="let item of supervisorList" [value]="item.supervisor">{{item.supervisor}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="form.get('supervisor').errors">
+                                Please choose a supervisor who you would like to send a notification to.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <button mat-raised-button color="primary" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
