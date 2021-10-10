@@ -1,6 +1,7 @@
 # LIGHTFEATHER_coding_challenge
-## Documentation
-- install angular `npm install -g @angular/cli`
-- install node.js `npm install -g npm`
-
+## Installation Guide
+- clone the [coding challenge repo](https://github.com/jdroetti/LIGHTFEATHER_coding_challenge.git)
+- navigate to notification-form in LIGHTFEATHER_coding_challenge folder
 - run `npm install`
+- run npm run start
+- open a window at `http://localhost:3080/`
